@@ -51,6 +51,4 @@ for pattern in patterns:
     for lemma in lemmas:
         if vff.find_verb_forms(lemma):
             for key, val in vff.find_verb_forms(lemma).items():
-                lemma   
-    
-#{'3SG': 'closes', 'gerund': 'closing', '2nd': 'closed', '3rd': 'closed'}
+                lemma
