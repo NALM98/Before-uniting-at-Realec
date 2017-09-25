@@ -35,7 +35,7 @@ for f in os.listdir(folder):
                 while words[i] != '.': # конечно, можно было бы просто найти в множестве sentences объект, содержащий строку с ошибкой, но это рискованно, потому что не исключена омонимия
                     sentence = words[i] + sentence
                     i -= 1
-                if 'although' in sentence:
+                if 'although' not in sentence:
                     break
                 else:
                     while words[u] != '.' and words[u] != '?' and words[u] != '!':
