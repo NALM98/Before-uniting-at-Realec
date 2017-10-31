@@ -21,12 +21,13 @@ for f in os.listdir(folder):
             sentences = sentences.replace('!', '.')
             sentences = sentences.split('.')
 
-            reg = re.compile(' used to [a-yA-y]+, but now')
+            reg = re.compile(' used to [a-y]+, but now', re.IGNORECASE) # поиск конструкций used to do
 
             for sentence in sentences:
                 if re.search(reg, sentence):
-                    maybe_verb = re.search(reg, sentence).group()
-                    maybe_verb = maybe_verb.split()[2]
+                    maybe_verb = re.findall(reg, sentence).group()
+                    print(maybe_verb)
+                    maybe_verb = maybe_verb.split()[2] # выбираем именно глагол, он на 2-м месте после used и to
                     if vff.find_verb_forms(maybe_verb):
                         verb = maybe_verb
                         verbs.append(verb)
