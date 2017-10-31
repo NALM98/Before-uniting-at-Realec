@@ -2,9 +2,11 @@
 # дать другие варианты из этой тройки.
 
 import os
+import random
 
 folder = 'realec_0516'
 questions = list()
+variants = ['before', 'since', 'until']
 answers = list()
 marks = list()
    
@@ -38,6 +40,17 @@ for f in os.listdir(folder):
                         
                 questions.append((sentence.replace(right_part, '?')))
                 answers.append((sentence))
+
+with open('variants_10.txt', 'w', encoding = 'utf-8') as output_file:
+    for i in range(len(answers)):    
+        output_string = answers[i] + ' ' + questions[i] + ' '
+        random.shuffle(variants)
+        for variant in variants:
+            output_string += ' ' + variant + ' '
+        output_file.write(output_string + '\n')
+        
+        
+        
 
 for i in range(len(answers)):
     marks.append(0)
